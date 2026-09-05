@@ -1,0 +1,34 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "rsmultiservices1",
+	"compatibility_date": "2025-10-08",
+	"main": "./workers/app.ts",
+	"upload_source_maps": true,
+	"observability": {
+		"enabled": true
+	},
+	"ai": {
+		"binding": "AI"
+	},
+	"kv_namespaces": [
+		{
+			"binding": "AEO_KV",
+			"id": "1eae4af982974bd0bd07b5bf346c96d6"
+		}
+	],
+	"queues": {
+		"producers": [
+			{
+				"queue": "rsmultiservices",
+				"binding": "BRAND_VISIBILITY_QUEUE"
+			}
+		],
+		"consumers": [
+			{
+				"queue": "rsmultiservices",
+				"max_batch_size": 5,
+				"max_concurrency": 10
+			}
+		]
+	}
+}
